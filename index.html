@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Encryptor Landing Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="noindex, nofollow">
+        
+    <style>
+        *,
+        *:after,
+        *:before {
+            box-sizing: border-box;
+        }
+        body,
+        html {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            font-weight: 300;
+            font-size: 16px;
+            background: url(bgEncrypt.jpg) no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100%;
+            margin: 0;
+        }
+        .site-header {
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 10px;
+            color: #fff;
+            z-index: 1000;
+        }
+        .site-header a {
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+        .header-icon img {
+            width: 30px; 
+            height: 30px; 
+            margin-right: 10px;
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+        .header-text {
+            font-size: 20px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.635);
+        }
+
+        .protected {
+            box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+            min-width: 400px; 
+            max-width: 500px; 
+            margin: 0 auto; 
+        }
+        .protected__content {
+            padding: 24px 28px;
+            background: rgba(0, 0, 0, 0.44);
+            border-radius: 15px;
+        }
+        .protected__content__heading {
+            text-align: center;
+            font-size: 16px;
+            font-weight: 500;
+            margin: 0 0 12px;
+            line-height: 1;
+            color: #fff;
+            margin-bottom: 40px;
+            margin-top: 10px;
+        }
+        .protected__content__btn1,
+        .protected__content__btn2 {
+            background-color: rgba(21, 23, 36, 0.687); 
+            border: 1px solid rgb(177, 177, 177);
+            color: white;
+            border-radius: 3px;
+            cursor: pointer;
+            padding: 12px 14px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .protected__content__btn1:hover,
+        .protected__content__btn2:hover {
+            background-color: #451de8;
+        }
+        .protected__content__paragraph {
+            display: flex;
+            justify-content: center; 
+            font-size: 14px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: rgba(255, 255, 255, 0.4);
+        }
+    </style>
+    </head>
+
+    <body>
+        <header class="site-header">
+                <div class="header-text">Custom and AES Encryptor Online</div>
+        </header>
+        <div>
+            <div class="protected">
+                <div class="protected__content">
+                    <h1 class="protected__content__heading">Select An Encryption</h1>
+                    <button data-id="button" type="button" class="protected__content__btn1" onclick="navigateTo('ownEncrypt/index.html')">Customized Encryption</button>
+                    <button data-id="button" type="button" class="protected__content__btn2" onclick="navigateTo('main.html')">AES Encryption</button>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        function navigateTo(path) {
+            window.location.href = path;
+        }
+    </script>
+</html>

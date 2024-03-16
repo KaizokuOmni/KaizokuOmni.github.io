@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AES to Text Converter</title>
+<style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        background-image: url('bgEncrypt.jpg');
+        background-repeat: no-repeat;
+        background-size: cover; 
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container1 {
+        background-color: rgba(0, 0, 0, 0.44);
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        padding-left: 40px;
+        width: 460px;
+    }
+
+    .container2 {
+        background-color: rgba(0, 0, 0, 0.44);
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        padding-left: 40px;
+        width: 460px; 
+        margin-left: 25px;
+    }
+    h2 {
+        font-size: 18px;
+        font-weight: 400;
+        color: rgb(255, 255, 255);
+        margin-top: 5px;
+        margin-bottom: 30px;
+    }
+    textarea {
+        background-color: rgba(21, 23, 36, 0.687); 
+        border: 1px solid rgb(177, 177, 177);
+        color: white;
+        width: calc(100% - 40px);
+        height: 100px;
+        width: 90%;
+        margin-bottom: 10px;
+        resize: none;
+        padding: 10px;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+    #encryptBtn {
+        width: 95%;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #5630ff;
+        margin-bottom: 10px;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+    #decryptBtn {
+        width: 95%;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #ff4e41;
+        margin-bottom: 10px;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    button:active {
+        background-color: #004d9e;
+    }
+    #clearBtn,
+    #clearDecryptionBtn {
+        width: 95%;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: rgb(83, 83, 83);
+        margin-bottom: 10px;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+    #clearBtn:hover,
+    #clearDecryptionBtn:hover {
+        background-color: #777;
+    }
+
+    #clearBtn:active,
+    #clearDecryptionBtn:active {
+        background-color: #555;
+    }
+</style>
+</head>
+<body>
+    <div class="container1">
+        <h2>Text to AES Encryption</h2>
+        <textarea id="plainText" placeholder="Enter text to encrypt"></textarea>
+        <button id="encryptBtn" onclick="encrypt()">Encrypt</button>
+        <textarea id="encryptedText" placeholder="Encrypted text" readonly></textarea>
+        <button id="clearBtn" onclick="clearFields()">Clear</button>
+    </div>
+    
+    <div class="container2">
+        <h2>AES Encryption to Text</h2>
+        <textarea id="encryptedInput" placeholder="Enter encrypted text"></textarea>
+        <button id="decryptBtn" onclick="decrypt()">Decrypt</button>
+        <textarea id="decryptedText" placeholder="Decrypted text" readonly></textarea>
+        <button id="clearDecryptionBtn" onclick="clearDecryptionFields()">Clear</button>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sjcl/1.0.8/sjcl.js"></script>
+<script>
+    function encrypt() {
+        var plaintext = document.getElementById('plainText').value;
+        var password = prompt("Enter password for encryption:");
+        if (password) {
+            var encrypted = sjcl.encrypt(password, plaintext);
+            document.getElementById('encryptedText').value = encrypted;
+        }
+    }
+
+    function decrypt() {
+        var encryptedText = document.getElementById('encryptedInput').value;
+        var password = prompt("Enter password for decryption:");
+        if (password) {
+            try {
+                var decrypted = sjcl.decrypt(password, encryptedText);
+                document.getElementById('decryptedText').value = decrypted;
+            } catch (error) {
+                alert("Decryption failed. Invalid password or encrypted text.");
+            }
+        }
+    }
+
+    function clearFields() {
+        document.getElementById('plainText').value = '';
+        document.getElementById('encryptedText').value = '';
+    }
+
+    function clearDecryptionFields() {
+        document.getElementById('encryptedInput').value = '';
+        document.getElementById('decryptedText').value = '';
+    }
+</script>
+
+</body>
+</html>
